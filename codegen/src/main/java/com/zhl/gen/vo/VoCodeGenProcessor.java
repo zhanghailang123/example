@@ -46,7 +46,7 @@ public class VoCodeGenProcessor extends BaseCodeGenProcessor {
 //        .addAnnotation(Schema.class)
 
         .addAnnotation(Data.class);
-    addSetterAndGetterMethod(builder, fields);
+//    addSetterAndGetterMethod(builder, fields);
 //    MethodSpec.Builder constructorSpecBuilder = MethodSpec.constructorBuilder()
 //        .addParameter(TypeName.get(typeElement.asType()), "source")
 //        .addModifiers(Modifier.PUBLIC);
@@ -55,9 +55,9 @@ public class VoCodeGenProcessor extends BaseCodeGenProcessor {
 //      constructorSpecBuilder.addStatement("this.set$L(source.get$L())", getFieldDefaultName(f),
 //          getFieldDefaultName(f));
 //    });
-    builder.addMethod(MethodSpec.constructorBuilder()
-        .addModifiers(Modifier.PROTECTED)
-        .build());
+//    builder.addMethod(MethodSpec.constructorBuilder()
+//        .addModifiers(Modifier.PROTECTED)
+//        .build());
 //    builder.addMethod(constructorSpecBuilder.build());
     String packageName = generatePackage(typeElement);
     genJavaSourceFile(packageName,typeElement.getAnnotation(GenDO.class).sourcePath(), builder);
