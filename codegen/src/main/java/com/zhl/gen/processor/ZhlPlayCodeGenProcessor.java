@@ -20,7 +20,7 @@ import java.util.Set;
  * @author gim
  */
 @AutoService(Processor.class)
-public class Only4PlayCodeGenProcessor extends AbstractProcessor {
+public class ZhlPlayCodeGenProcessor extends AbstractProcessor {
 
   @Override
   public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {

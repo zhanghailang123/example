@@ -1,7 +1,10 @@
 package com.zhl.gen.vo;
 
 import com.google.auto.service.AutoService;
+import com.squareup.javapoet.AnnotationSpec;
+import com.squareup.javapoet.FieldSpec;
 import com.squareup.javapoet.MethodSpec;
+import com.squareup.javapoet.TypeName;
 import com.squareup.javapoet.TypeSpec;
 import com.squareup.javapoet.TypeSpec.Builder;
 
@@ -23,7 +26,7 @@ import java.util.Set;
 @AutoService(value = CodeGenProcessor.class)
 public class VoCodeGenProcessor extends BaseCodeGenProcessor {
 
-  public static final String SUFFIX = "VO";
+  public static final String SUFFIX = "DO";
 
   @Override
   public Class<? extends Annotation> getAnnotation() {
@@ -59,6 +62,12 @@ public class VoCodeGenProcessor extends BaseCodeGenProcessor {
 //        .addModifiers(Modifier.PROTECTED)
 //        .build());
 //    builder.addMethod(constructorSpecBuilder.build());
+    fields.stream().forEach(ve -> {
+      FieldSpec.Builder fieldSpec = FieldSpec
+              .builder(TypeName.get(ve.asType()), ve.getSimpleName().toString(), Modifier.PRIVATE);
+      builder.addField(fieldSpec.build());
+    });
+
     String packageName = generatePackage(typeElement);
     genJavaSourceFile(packageName,typeElement.getAnnotation(GenDO.class).sourcePath(), builder);
 //    genJavaFile(packageName, getSourceTypeWithConstruct(typeElement,sourceClassName, packageName, className));
