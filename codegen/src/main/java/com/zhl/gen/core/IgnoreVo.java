@@ -1,7 +1,7 @@
-package com.zhl.gen.vo;
+package com.zhl.gen.core;
 
 /**
- * @Author: Gim
+ * @Author: zhl
  * @Description:
  */
 public @interface IgnoreVo {

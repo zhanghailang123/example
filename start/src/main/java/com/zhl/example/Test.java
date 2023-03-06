@@ -1,6 +1,6 @@
 package com.zhl.example;
 
-import com.zhl.gen.vo.GenDO;
+import com.zhl.gen.core.GenDO;
 
 /**
  * @author hailang.zhang

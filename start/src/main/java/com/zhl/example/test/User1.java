@@ -7,7 +7,7 @@ import lombok.Data;
  * @since 2023-02-17
  */
 @Data
-public class User {
+public class User1 {
     private String name;
     private Car car;
 

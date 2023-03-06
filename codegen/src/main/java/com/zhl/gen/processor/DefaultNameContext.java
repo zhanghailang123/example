@@ -8,9 +8,9 @@ import lombok.Data;
 @Data
 public class DefaultNameContext {
 
-  private String voPackageName;
+  private String doPackageName;
 
-  private String voClassName;
+  private String doClassName;
 
   private String queryPackageName;
 
@@ -62,9 +62,5 @@ public class DefaultNameContext {
   private String responsePackageName;
 
   private String responseClassName;
-
-  private String feignPackageName;
-
-  private String feignClassName;
 
 }

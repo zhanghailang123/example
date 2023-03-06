@@ -1,4 +1,4 @@
-package com.zhl.gen.vo;
+package com.zhl.gen.core;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

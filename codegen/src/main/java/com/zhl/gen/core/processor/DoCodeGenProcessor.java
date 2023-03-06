@@ -1,14 +1,15 @@
-package com.zhl.gen.vo;
+package com.zhl.gen.core.processor;
 
 import com.google.auto.service.AutoService;
-import com.squareup.javapoet.AnnotationSpec;
 import com.squareup.javapoet.FieldSpec;
-import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.TypeName;
 import com.squareup.javapoet.TypeSpec;
 import com.squareup.javapoet.TypeSpec.Builder;
 
+import com.zhl.gen.core.GenDO;
+import com.zhl.gen.core.IgnoreVo;
 import com.zhl.gen.processor.BaseCodeGenProcessor;
+import com.zhl.gen.processor.DefaultNameContext;
 import com.zhl.gen.spi.CodeGenProcessor;
 import lombok.Data;
 
@@ -24,7 +25,7 @@ import java.util.Set;
  * @author gim vo 代码生成器
  */
 @AutoService(value = CodeGenProcessor.class)
-public class VoCodeGenProcessor extends BaseCodeGenProcessor {
+public class DoCodeGenProcessor extends BaseCodeGenProcessor {
 
   public static final String SUFFIX = "DO";
 
@@ -40,6 +41,7 @@ public class VoCodeGenProcessor extends BaseCodeGenProcessor {
 
   @Override
   protected void generateClass(TypeElement typeElement, RoundEnvironment roundEnvironment) {
+    DefaultNameContext nameContext = getNameContext(typeElement);
     Set<VariableElement> fields = findFields(typeElement,
         ve -> Objects.isNull(ve.getAnnotation(IgnoreVo.class)));
     String className = typeElement.getSimpleName() + SUFFIX;
