@@ -13,6 +13,14 @@ import com.squareup.javapoet.TypeSpec;
 import com.zhl.gen.annotation.FieldDesc;
 import com.zhl.gen.annotation.TypeConverter;
 import com.zhl.gen.context.ProcessingEnvironmentHolder;
+import com.zhl.gen.core.GenCmdExe;
+import com.zhl.gen.core.GenConverter;
+import com.zhl.gen.core.GenQryExe;
+import com.zhl.gen.core.GenService;
+import com.zhl.gen.core.processor.CmdExeCodeGenProcessor;
+import com.zhl.gen.core.processor.ConverterCodeGenProcessor;
+import com.zhl.gen.core.processor.QryExeCodeGenProcessor;
+import com.zhl.gen.core.processor.ServiceCodeGenProcessor;
 import com.zhl.gen.spi.CodeGenProcessor;
 import com.zhl.gen.core.processor.GatewayCodeGenProcessor;
 import com.zhl.gen.core.GenDO;
@@ -92,12 +100,16 @@ public abstract class BaseCodeGenProcessor implements CodeGenProcessor {
    */
   public DefaultNameContext getNameContext(TypeElement typeElement) {
     DefaultNameContext context = new DefaultNameContext();
-    String serviceName =typeElement.getSimpleName()
-        + GatewayCodeGenProcessor.SUFFIX;
+
+    String serviceName =typeElement.getSimpleName() + ServiceCodeGenProcessor.SUFFIX;
+    String gateWayName =typeElement.getSimpleName() + GatewayCodeGenProcessor.SUFFIX;
 //    String implName = typeElement.getSimpleName() + GenServiceImplProcessor.IMPL_SUFFIX;
 //    String repositoryName = typeElement.getSimpleName() + GenRepositoryProcessor.REPOSITORY_SUFFIX;
 //    String mapperName = typeElement.getSimpleName() + GenMapperProcessor.SUFFIX;
     String doName = typeElement.getSimpleName() + DoCodeGenProcessor.SUFFIX;
+    String cmdExeName = typeElement.getSimpleName() + CmdExeCodeGenProcessor.SUFFIX;
+    String qryExeName = typeElement.getSimpleName() + QryExeCodeGenProcessor.SUFFIX;
+    String converterName = typeElement.getSimpleName() + ConverterCodeGenProcessor.SUFFIX;
 //    String queryName = typeElement.getSimpleName() + GenQueryProcessor.QUERY_SUFFIX;
 //    String creatorName = typeElement.getSimpleName() + CreatorCodeGenProcessor.SUFFIX;
 //    String updaterName = typeElement.getSimpleName() + GenUpdaterProcessor.SUFFIX;
@@ -111,9 +123,13 @@ public abstract class BaseCodeGenProcessor implements CodeGenProcessor {
 //    String feignName = typeElement.getSimpleName() + GenFeignProcessor.FEIGN_SUFFIX;
 //    String controllerName = typeElement.getSimpleName() + GenControllerProcessor.CONTROLLER_SUFFIX;
     context.setServiceClassName(serviceName);
+    context.setGateWayClassName(gateWayName);
 //    context.setRepositoryClassName(repositoryName);
 //    context.setMapperClassName(mapperName);
     context.setDoClassName(doName);
+    context.setQryExeClassName(qryExeName);
+    context.setCmdExeClassName(cmdExeName);
+    context.setConverterClassName(converterName);
 //    context.setQueryClassName(queryName);
 //    context.setCreatorClassName(creatorName);
 //    context.setUpdaterClassName(updaterName);
@@ -144,6 +160,18 @@ public abstract class BaseCodeGenProcessor implements CodeGenProcessor {
 //    });
     Optional.ofNullable(typeElement.getAnnotation(GenGateway.class)).ifPresent(anno -> {
       context.setServicePackageName(anno.pkgName());
+    });
+    Optional.ofNullable(typeElement.getAnnotation(GenService.class)).ifPresent(anno -> {
+      context.setGateWayPackageName(anno.pkgName());
+    });
+    Optional.ofNullable(typeElement.getAnnotation(GenQryExe.class)).ifPresent(anno -> {
+      context.setQryExePackageName(anno.pkgName());
+    });
+    Optional.ofNullable(typeElement.getAnnotation(GenCmdExe.class)).ifPresent(anno -> {
+      context.setCmdExePackageName(anno.pkgName());
+    });
+    Optional.ofNullable(typeElement.getAnnotation(GenConverter.class)).ifPresent(anno -> {
+      context.setConverterPackageName(anno.pkgName());
     });
 //    Optional.ofNullable(typeElement.getAnnotation(GenServiceImpl.class)).ifPresent(anno -> {
 //      context.setImplPackageName(anno.pkgName());

@@ -5,6 +5,7 @@ import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.TypeSpec;
 import com.zhl.gen.core.GenDO;
 import com.zhl.gen.core.GenGatewayImpl;
+import com.zhl.gen.core.GenQryExe;
 import com.zhl.gen.processor.BaseCodeGenProcessor;
 import com.zhl.gen.processor.DefaultNameContext;
 import com.zhl.gen.spi.CodeGenProcessor;
@@ -22,7 +23,7 @@ import java.lang.annotation.Annotation;
 @AutoService(value = CodeGenProcessor.class)
 public class QryExeCodeGenProcessor extends BaseCodeGenProcessor {
 
-    public static final String SUFFIX = "GatewayImpl";
+    public static final String SUFFIX = "QryExe";
 
     @Override
     protected void generateClass(TypeElement typeElement, RoundEnvironment roundEnvironment) {
@@ -30,21 +31,19 @@ public class QryExeCodeGenProcessor extends BaseCodeGenProcessor {
 
         String className = typeElement.getSimpleName() + SUFFIX;
         TypeSpec.Builder builder = TypeSpec.classBuilder(className)
-                .addSuperinterface(
-                        ClassName.get(nameContext.getServicePackageName(), nameContext.getServiceClassName()))
                 .addModifiers(Modifier.PUBLIC)
                 .addAnnotation(Service.class);
         String packageName = generatePackage(typeElement);
-        genJavaSourceFile(packageName, typeElement.getAnnotation(GenDO.class).sourcePath(), builder);
+        genJavaSourceFile(packageName, typeElement.getAnnotation(GenQryExe.class).sourcePath(), builder);
     }
 
     @Override
     public Class<? extends Annotation> getAnnotation() {
-        return GenGatewayImpl.class;
+        return GenQryExe.class;
     }
 
     @Override
     public String generatePackage(TypeElement typeElement) {
-        return typeElement.getAnnotation(GenDO.class).pkgName();
+        return typeElement.getAnnotation(GenQryExe.class).pkgName();
     }
 }

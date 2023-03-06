@@ -32,9 +32,25 @@ public class DefaultNameContext {
 
   private String repositoryClassName;
 
+  private String qryExePackageName;
+
+  private String qryExeClassName;
+
+  private String cmdExePackageName;
+
+  private String cmdExeClassName;
+
+  private String converterPackageName;
+
+  private String converterClassName;
+
   private String servicePackageName;
 
   private String serviceClassName;
+
+  private String gateWayPackageName;
+
+  private String gateWayClassName;
 
   private String implPackageName;
 

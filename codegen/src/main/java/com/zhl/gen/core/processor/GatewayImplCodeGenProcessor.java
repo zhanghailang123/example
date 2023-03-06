@@ -32,7 +32,7 @@ public class GatewayImplCodeGenProcessor extends BaseCodeGenProcessor {
         String className = typeElement.getSimpleName() + SUFFIX;
         TypeSpec.Builder builder = TypeSpec.classBuilder(className)
                 .addSuperinterface(
-                        ClassName.get(nameContext.getServicePackageName(), nameContext.getServiceClassName()))
+                        ClassName.get(nameContext.getGateWayPackageName(), nameContext.getGateWayClassName()))
                 .addModifiers(Modifier.PUBLIC)
                 .addAnnotation(Service.class);
         String packageName = generatePackage(typeElement);
