@@ -103,61 +103,19 @@ public abstract class BaseCodeGenProcessor implements CodeGenProcessor {
 
     String serviceName =typeElement.getSimpleName() + ServiceCodeGenProcessor.SUFFIX;
     String gateWayName =typeElement.getSimpleName() + GatewayCodeGenProcessor.SUFFIX;
-//    String implName = typeElement.getSimpleName() + GenServiceImplProcessor.IMPL_SUFFIX;
-//    String repositoryName = typeElement.getSimpleName() + GenRepositoryProcessor.REPOSITORY_SUFFIX;
-//    String mapperName = typeElement.getSimpleName() + GenMapperProcessor.SUFFIX;
     String doName = typeElement.getSimpleName() + DoCodeGenProcessor.SUFFIX;
     String cmdExeName = typeElement.getSimpleName() + CmdExeCodeGenProcessor.SUFFIX;
     String qryExeName = typeElement.getSimpleName() + QryExeCodeGenProcessor.SUFFIX;
     String converterName = typeElement.getSimpleName() + ConverterCodeGenProcessor.SUFFIX;
-//    String queryName = typeElement.getSimpleName() + GenQueryProcessor.QUERY_SUFFIX;
-//    String creatorName = typeElement.getSimpleName() + CreatorCodeGenProcessor.SUFFIX;
-//    String updaterName = typeElement.getSimpleName() + GenUpdaterProcessor.SUFFIX;
-//    String createRequestName =
-//        typeElement.getSimpleName() + GenCreateRequestProcessor.CREATE_REQUEST_SUFFIX;
-//    String updateRequestName =
-//        typeElement.getSimpleName() + GenUpdateRequestProcessor.UPDATE_REQUEST_SUFFIX;
-//    String queryRequestName =
-//        typeElement.getSimpleName() + GenQueryRequestProcessor.QUERY_REQUEST_SUFFIX;
-//    String responseName = typeElement.getSimpleName() + GenResponseProcessor.RESPONSE_SUFFIX;
-//    String feignName = typeElement.getSimpleName() + GenFeignProcessor.FEIGN_SUFFIX;
-//    String controllerName = typeElement.getSimpleName() + GenControllerProcessor.CONTROLLER_SUFFIX;
     context.setServiceClassName(serviceName);
     context.setGateWayClassName(gateWayName);
-//    context.setRepositoryClassName(repositoryName);
-//    context.setMapperClassName(mapperName);
     context.setDoClassName(doName);
     context.setQryExeClassName(qryExeName);
     context.setCmdExeClassName(cmdExeName);
     context.setConverterClassName(converterName);
-//    context.setQueryClassName(queryName);
-//    context.setCreatorClassName(creatorName);
-//    context.setUpdaterClassName(updaterName);
-//    context.setImplClassName(implName);
-//    context.setCreateClassName(createRequestName);
-//    context.setUpdateClassName(updateRequestName);
-//    context.setQueryRequestClassName(queryRequestName);
-//    context.setResponseClassName(responseName);
-//    context.setFeignClassName(feignName);
-//    context.setControllerClassName(controllerName);
-//    Optional.ofNullable(typeElement.getAnnotation(GenCreator.class)).ifPresent(anno -> {
-//      context.setCreatorPackageName(anno.pkgName());
-//    });
-//    Optional.ofNullable(typeElement.getAnnotation(GenUpdater.class)).ifPresent(anno -> {
-//      context.setUpdaterPackageName(anno.pkgName());
-//    });
-//    Optional.ofNullable(typeElement.getAnnotation(GenQuery.class)).ifPresent(anno -> {
-//      context.setQueryPackageName(anno.pkgName());
-//    });
     Optional.ofNullable(typeElement.getAnnotation(GenDO.class)).ifPresent(anno -> {
       context.setDoPackageName(anno.pkgName());
     });
-//    Optional.ofNullable(typeElement.getAnnotation(GenRepository.class)).ifPresent(anno -> {
-//      context.setRepositoryPackageName(anno.pkgName());
-//    });
-//    Optional.ofNullable(typeElement.getAnnotation(GenMapper.class)).ifPresent(anno -> {
-//      context.setMapperPackageName(anno.pkgName());
-//    });
     Optional.ofNullable(typeElement.getAnnotation(GenGateway.class)).ifPresent(anno -> {
       context.setServicePackageName(anno.pkgName());
     });
@@ -173,27 +131,6 @@ public abstract class BaseCodeGenProcessor implements CodeGenProcessor {
     Optional.ofNullable(typeElement.getAnnotation(GenConverter.class)).ifPresent(anno -> {
       context.setConverterPackageName(anno.pkgName());
     });
-//    Optional.ofNullable(typeElement.getAnnotation(GenServiceImpl.class)).ifPresent(anno -> {
-//      context.setImplPackageName(anno.pkgName());
-//    });
-//    Optional.ofNullable(typeElement.getAnnotation(GenCreateRequest.class)).ifPresent(anno -> {
-//      context.setCreatePackageName(anno.pkgName());
-//    });
-//    Optional.ofNullable(typeElement.getAnnotation(GenUpdateRequest.class)).ifPresent(anno -> {
-//      context.setUpdatePackageName(anno.pkgName());
-//    });
-//    Optional.ofNullable(typeElement.getAnnotation(GenQueryRequest.class)).ifPresent(anno -> {
-//      context.setQueryRequestPackageName(anno.pkgName());
-//    });
-//    Optional.ofNullable(typeElement.getAnnotation(GenResponse.class)).ifPresent(anno -> {
-//      context.setResponsePackageName(anno.pkgName());
-//    });
-//    Optional.ofNullable(typeElement.getAnnotation(GenFeign.class)).ifPresent(anno -> {
-//      context.setFeignPackageName(anno.pkgName());
-//    });
-//    Optional.ofNullable(typeElement.getAnnotation(GenController.class)).ifPresent(anno -> {
-//      context.setControllerPackageName(anno.pkgName());
-//    });
     return context;
   }
 
