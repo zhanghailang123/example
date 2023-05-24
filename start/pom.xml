@@ -47,6 +47,12 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency>
         <dependency>
             <groupId>com.alibaba.cola</groupId>
             <artifactId>cola-component-statemachine</artifactId>
@@ -64,9 +70,15 @@
             </exclusions>
         </dependency>
         <dependency>
-            <groupId>org.example</groupId>
-            <artifactId>codegen</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>3.5.2</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.jetbrains.kotlin</groupId>
+                    <artifactId>kotlin-stdlib-jdk8</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 
