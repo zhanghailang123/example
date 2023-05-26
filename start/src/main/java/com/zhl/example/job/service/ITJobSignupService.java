@@ -15,4 +15,6 @@ import com.zhl.example.job.model.entity.job.TJobSignup;
 public interface ITJobSignupService extends IService<TJobSignup> {
 
     void signUp(SignUpRequest request);
+
+    void mergeRequest(SignUpRequest request);
 }
