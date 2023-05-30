@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
-import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +39,7 @@ public class BatchCommit {
             }
             log.info("此次合并了多少请求: {}", cache.size());
             List<TJobSignup> list = new ArrayList<TJobSignup>();
-            if (!cache.isEmpty()) {
+            while (!cache.isEmpty()) {
                 TJobSignup signup = new TJobSignup();
                 try {
                     signup.setUserId(cache.take().getUserId());
