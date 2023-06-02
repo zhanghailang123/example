@@ -22,7 +22,9 @@ public class TestConsumerAndProducer {
                 produce();
             })).start();
         }
-
+        //是否具备写长代码 设计和编程的能力呢 came back 你所作的事 和你追求的事有没有必然联系 如果没有的话希望你好好想以下
+        //并且
+        //get restart 假如今天的你被裁了 那么你有没有准备好 或者说有没有能力
         new Thread(() -> {
             while (true) {
                 synchronized (lock) {

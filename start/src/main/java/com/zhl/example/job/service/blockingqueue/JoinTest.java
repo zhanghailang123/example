@@ -17,8 +17,9 @@ public class JoinTest {
             count++;
             System.out.println(Thread.currentThread().getName() + "--开始执行 :" + count);
         });
+        t1.setDaemon(true);
         t1.start();
-        t1.join();
+//        t1.join();
         System.out.println(count);
     }
 }
