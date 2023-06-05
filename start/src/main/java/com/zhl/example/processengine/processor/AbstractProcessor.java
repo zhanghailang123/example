@@ -46,4 +46,9 @@ public abstract class AbstractProcessor implements Processor {
     public String getName() {
         return name;
     }
+
+    @Override
+    public void caughtException(ProcessContext context, Throwable throwable) {
+
+    }
 }

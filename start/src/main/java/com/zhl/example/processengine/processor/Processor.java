@@ -12,4 +12,11 @@ public interface Processor {
     void setName(String name);
 
     String getName();
+
+    /**
+     * 触发异常了
+     * @param context 上下文
+     * @param throwable 异常
+     */
+    void caughtException(ProcessContext context, Throwable throwable);
 }

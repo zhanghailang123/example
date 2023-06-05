@@ -28,4 +28,15 @@ public class ProcessorDefinition {
             throw new IllegalArgumentException("Processor chain exists ring.");
         }
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    private void buildStr(StringBuilder sb, ProcessorNode node) {
+        for (ProcessorNode child : node.getNextNodes().values()) {
+            sb.append(node.getName()).append(" -> ").append(child.getName()).append("\n");
+            buildStr(sb, child);
+        }
+    }
 }
