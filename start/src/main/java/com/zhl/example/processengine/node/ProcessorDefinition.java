@@ -19,7 +19,7 @@ public class ProcessorDefinition {
     }
 
     public ProcessorDefinition(ProcessorNode first) {
-
+        setFirst(first);
     }
 
     public void setFirst(ProcessorNode first) {
