@@ -26,7 +26,6 @@ public class ProcessorNode {
      */
     private Processor processor;
 
-
     private Map<String, ProcessorNode> nextNodes = new HashMap<>();
 
     private InvokeMethod invokeMethod = InvokeMethod.SYNC;
